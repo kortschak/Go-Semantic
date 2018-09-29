@@ -1,0 +1,22 @@
+{
+    "rules":
+    [
+        {
+            "name": "Go unsafe",
+            "scope": "unsafe.sem.go",
+            "foreground": "hsl(0, 100%, 50%)",
+            "font_style": "bold italic"
+        },
+        {
+            "name": "Go keyword",
+            "scope": "keyword.control.sem.go - punctuation,keyword.other.sem.go - punctuation",
+            "foreground": "darkgray",
+            "font_style": "italic"
+        },
+        {
+            "name": "Go variable",
+            "scope": "source.sem.go - punctuation - keyword - storage,support.function.sem.go,entity.name.function.sem.go,entity.name.type.sem.go,meta.initialization.short.sem.go",
+            "foreground": ["hsl(20, 100%, 50%)", "hsl(300, 100%, 80%)"]
+        },
+    ]
+}

@@ -1,0 +1,131 @@
+%YAML 1.2
+---
+name: "Go Semantic"
+comment: Based on work from github.com/frou/GoFeather and github.com/DisposaBoy/GoSublime
+hidden: false
+first_line_match: "-[*]-( Mode:)? Go -[*]-"
+scope: source.sem.go
+contexts:
+  main:
+    - match: /\*
+      push:
+        - meta_scope: comment.block.sem.go
+        - match: \*/
+          pop: true
+    - match: //
+      push:
+        - meta_scope: comment.line.double-slash.sem.go
+        - match: \z
+          pop: true
+    - match: '"'
+      captures:
+        0: punctuation.definition.string.begin.sem.go
+      push:
+        - meta_scope: string.quoted.double.sem.go
+        - match: '"'
+          captures:
+            0: punctuation.definition.string.end.sem.go
+          pop: true
+        - include: string_placeholder
+        - include: string_escaped_char
+    - match: "`"
+      captures:
+        0: punctuation.definition.string.begin.sem.go
+      push:
+        - meta_scope: string.quoted.raw.sem.go
+        - match: '`'
+          captures:
+            0: punctuation.definition.string.end.sem.go
+          pop: true
+        - include: string_placeholder
+        - match: '{{'
+          captures:
+            0: punctuation.section.embedded.begin.sem.gotemplate
+          push: Packages/GoSublime/syntax/GoSublime-Template.sublime-syntax
+          with_prototype:
+            - match: '}}'
+              captures:
+                0: punctuation.section.embedded.end.sem.gotemplate
+              pop: true
+            - match: (?=`)
+              pop: true
+    - match: \b(true|false|nil|iota)\b
+      scope: constant.language.sem.go
+    - match: '\b((\d+\.(\d+)?([eE][+-]?\d+)?|\d+[eE][+-]?\d+|\.\d+([eE][+-]?\d+)?)i?)\b'
+      scope: constant.numeric.floating-point.sem.go
+    - match: '\b(\d+i|0[xX][0-9A-Fa-f]+|0[0-7]*|[1-9][0-9]*)\b'
+      scope: constant.numeric.integer.sem.go
+    - match: '''(?:[^''\\]|\\(?:\\|[abfnrtv'']|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|[0-7]{3}))'''
+      scope: constant.other.rune.sem.go
+    - match: \b(bool|byte|complex(64|128)|error|float(32|64)|rune|string|u?int(8|16|32|64)?|uintptr)\b
+      scope: storage.type.sem.go
+    - match: \b(break|case|continue|default|defer|else|for|go|goto|if|range|return|select|switch)\b
+      comment: A subset of keyword.other.sem.go for flow control keywords.
+      scope: keyword.control.sem.go
+    - match: \b(break|case|chan|const|continue|default|defer|else|fallthrough|for|func|go|goto|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b
+      scope: keyword.other.sem.go
+    - match: '(?:[[:alpha:]_][[:alnum:]_]*)(?:(,):\s+[[:alpha:]_][[:alnum:]_]*)*\s*(:=)'
+      comment: This matches the 'x := 0' style of variable declaration.
+      scope: meta.initialization.short.sem.go
+      captures:
+        0: variable.other.sem.go
+        1: keyword.operator.initialize.sem.go
+    - match: (?<=(\Afunc|...\))\s)\b(\w+)\b(?=\()
+      scope: entity.name.function.sem.go
+    - match: (?<=(\sfunc|....\))\s)\b(\w+)\b(?=\()
+      scope: entity.name.function.sem.go
+    - match: (?<=\Atype\s)\b(\w+)\b
+      scope: entity.name.type.sem.go
+    - match: (?<=\stype\s)\b(\w+)\b
+      scope: entity.name.type.sem.go
+    - match: \b(append|cap|close|complex|copy|delete|imag|len|make|new|panic|print|println|real|recover)\b
+      scope: support.function.builtin.sem.go
+    - match: \b(\w+)\b(?=\()
+      scope: support.function.sem.go
+    - match: '--'
+      scope: keyword.operator.decrement.sem.go
+    - match: '[+]{2}'
+      scope: keyword.operator.increment.sem.go
+    - match: '[.]{3}'
+      scope: keyword.operator.sem.go
+    - match: '<-'
+      scope: keyword.operator.channel.sem.go
+    - match: '[-+|^*/%&]=|<<=|>>=|&^='
+      scope: keyword.operator.assignment.sem.go
+    - match: '&^|<<|>>'
+      scope: keyword.operator.arithmetic.sem.go
+    - match: '[=!<>]=|[<>]'
+      scope: keyword.operator.comparison.sem.go
+    - match: "[|&]{2}|!"
+      scope: keyword.operator.logical.sem.go
+    - match: '[-+*/%^&|]'
+      scope: keyword.operator.arithmetic.sem.go
+    - match: '='
+      scope: keyword.operator.assignment.sem.go
+    - match: (;)
+      scope: keyword.operator.semi-colon.sem.go
+    - match: (,)
+      scope: punctuation.definition.comma.sem.go
+    - match: '[.]'
+      scope: punctuation.definition.dot.sem.go
+    - match: (:)
+      scope: punctuation.definition.colon.sem.go
+    - match: '(\[|\]|{|}|\(|\))'
+      scope: punctuation.definition.bracket.sem.go
+    - match: \bunsafe\b
+      scope: unsafe.sem.go
+  string_escaped_char:
+    - match: '\\(\\|[abfnrtv''"]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|[0-7]{3})'
+      scope: constant.character.escape.sem.go
+    - match: \\.
+      scope: invalid.illegal.unknown-escape.sem.go
+  string_placeholder:
+    - match: |-
+        (?x)%
+            (\d+\$)?                                    # field (argument #)
+            [#0\- +']*                                  # flags
+            [,;:_]?                                     # separator character (AltiVec)
+            ((-?\d+)|\*(-?\d+\$)?)?                     # minimum field width
+            (\.((-?\d+)|\*(-?\d+\$)?)?)?                # precision
+            [diouxXDOUeEfFgGaAcCsSqpnvtTbyYhHmMzZ%]     # conversion type
+      scope: constant.other.placeholder.sem.go
