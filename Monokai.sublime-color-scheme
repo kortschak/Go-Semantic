@@ -14,6 +14,12 @@
             "font_style": "italic"
         },
         {
+            "name": "Go underscore",
+            "scope": "underscore.sem.go",
+            "foreground": "#FFA421",
+            "font_style": "bold"
+        },
+        {
             "name": "Go variable",
             "scope": "source.sem.go - punctuation - keyword - storage,support.function.sem.go,entity.name.function.sem.go,entity.name.type.sem.go,meta.initialization.short.sem.go",
             "foreground": ["hsl(20, 100%, 50%)", "hsl(300, 100%, 80%)"]
