@@ -26,7 +26,7 @@
         },
         {
             "name": "Go label",
-            "scope": "variable.other.member.declaration.go,storage.type.go,variable.other.go,variable.other.member.go,variable.declaration.go,variable.other.constant.declaration.go,variable.function.go,entity.name.function.go,entity.name.type.go,meta.initialization.short.go,variable.parameter.go",
+            "scope": "variable.other.member.declaration.go,entity.other.inherited-class.go,storage.type.go,variable.other.go,variable.other.member.go,variable.declaration.go,variable.other.constant.declaration.go,variable.function.go,entity.name.function.go,entity.name.type.go,meta.initialization.short.go,variable.parameter.go",
             "foreground": ["hsl(20, 100%, 50%)", "hsl(300, 100%, 80%)"],
             "font_style": "!italic"
         },
