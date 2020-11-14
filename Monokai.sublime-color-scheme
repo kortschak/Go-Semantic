@@ -9,13 +9,13 @@
         },
         {
             "name": "Go keyword",
-            "scope": "constant.language.go,keyword.other.package.go,storage.type.keyword.struct.go,storage.type.keyword.interface.go,keyword.other.import.go,storage.type.keyword.type.go,storage.type.keyword.var.go,storage.type.keyword.function.go,storage.type.keyword.const.go,keyword.control.go,keyword.other.go",
+            "scope": "source.go constant.language,source.go keyword,source.go storage.type.keyword",
             "foreground": "darkgray",
             "font_style": "italic"
         },
         {
             "name": "Go operator",
-            "scope": "keyword.operator.assignment.go,keyword.operator.go,keyword.operator.variadic.go",
+            "scope": "source.go keyword.operator",
             "foreground": "lightgray",
         },
         {
@@ -26,7 +26,7 @@
         },
         {
             "name": "Go label",
-            "scope": "variable.other.member.declaration.go,entity.other.inherited-class.go,storage.type.go,variable.other.go,variable.other.member.go,variable.declaration.go,variable.other.constant.declaration.go,variable.function.go,entity.name.function.go,entity.name.type.go,meta.initialization.short.go,variable.parameter.go",
+            "scope": "source.go variable,source.go variable.parameter,source.go storage.type,source.go entity.name",
             "foreground": ["hsl(20, 100%, 50%)", "hsl(300, 100%, 80%)"],
             "font_style": "!italic"
         },
