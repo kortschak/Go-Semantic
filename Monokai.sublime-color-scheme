@@ -5,18 +5,19 @@
             "name": "Go unsafe",
             "scope": "unsafe.go",
             "foreground": "hsl(0, 100%, 50%)",
-            "font_style": "bold italic"
+            "font_style": "bold italic",
         },
         {
             "name": "Go keyword",
             "scope": "source.go constant.language,source.go keyword,source.go storage.type.keyword",
             "foreground": "darkgray",
-            "font_style": "italic"
+            "font_style": "italic",
         },
         {
             "name": "Go operator",
             "scope": "source.go keyword.operator",
             "foreground": "lightgray",
+            "font_style": "!italic",
         },
         {
             "name": "Go underscore",
@@ -28,7 +29,7 @@
             "name": "Go label",
             "scope": "source.go variable,source.go variable.parameter,source.go storage.type,source.go entity.name",
             "foreground": ["hsl(20, 100%, 50%)", "hsl(300, 100%, 80%)"],
-            "font_style": "!italic"
+            "font_style": "!italic",
         },
     ]
 }
