@@ -27,9 +27,14 @@
         },
         {
             "name": "Go label",
-            "scope": "source.go variable,source.go variable.parameter,source.go storage.type,source.go entity.name",
+            "scope": "source.go variable,source.go variable.parameter,source.go storage.type,source.go entity.name,source.go entity.other.inherited-class.go",
             "foreground": ["hsl(20, 100%, 50%)", "hsl(300, 100%, 80%)"],
             "font_style": "!italic",
+        },
+        {
+            "name": "Go embedded field",
+            "scope": "source.go entity.other.inherited-class.go",
+            "font_style": "glow",
         },
     ]
 }
