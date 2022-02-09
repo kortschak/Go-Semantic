@@ -36,5 +36,11 @@
             "scope": "source.go entity.other.inherited-class.go",
             "font_style": "glow",
         },
+        {
+            "name": "Go comment",
+            "scope": "source.go comment.line.go",
+            "foreground": "#dccc5d",
+            "font_style": "italic",
+        },
     ]
 }
