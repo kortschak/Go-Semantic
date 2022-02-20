@@ -38,7 +38,7 @@
         },
         {
             "name": "Go comment",
-            "scope": "source.go comment.line.go",
+            "scope": "source.go comment.line.go,comment.block.go",
             "foreground": "#dccc5d",
             "font_style": "italic",
         },
