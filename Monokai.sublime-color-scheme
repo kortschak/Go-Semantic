@@ -42,5 +42,11 @@
             "foreground": "#dccc5d",
             "font_style": "italic",
         },
+        {
+            "name": "Go compiler directive",
+            "scope": "meta.keyword.annotation.go,meta.variable.function.go",
+            "foreground": "orange",
+            "font_style": "glow",
+        },
     ]
 }
