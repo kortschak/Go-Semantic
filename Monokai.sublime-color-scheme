@@ -44,9 +44,18 @@
         },
         {
             "name": "Go compiler directive",
-            "scope": "meta.keyword.annotation.go,meta.variable.function.go",
+            "scope": "meta.keyword.annotation.go,meta.variable.function.go,meta.variable.parameter.go",
             "foreground": "orange",
-            "font_style": "glow",
+        },
+        {
+            "name": "Go compiler directive",
+            "scope": "meta.keyword.annotation.go,meta.variable.function.go",
+            "font_style": "glow italic",
+        },
+        {
+            "name": "Go compiler directive",
+            "scope": "meta.variable.parameter.go",
+            "font_style": "!italic",
         },
     ]
 }
