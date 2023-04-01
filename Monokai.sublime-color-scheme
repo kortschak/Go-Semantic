@@ -53,6 +53,12 @@
             "font_style": "glow italic",
         },
         {
+            "name": "Go struct tag punctuation",
+            "scope": "punctuation.definition.annotation",
+            "foreground": "lightgray",
+            "font_style": "!italic",
+        },
+        {
             "name": "Go compiler directive",
             "scope": "meta.variable.parameter.go",
             "font_style": "!italic",
